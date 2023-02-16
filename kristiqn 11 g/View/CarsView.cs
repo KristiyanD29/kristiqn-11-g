@@ -1,4 +1,5 @@
 ﻿using kristiqn_11_g.Controller;
+using kristiqn_11_g.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,6 +34,15 @@ namespace kristiqn_11_g.View
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Car car = new Car();
+            car.Model = txtModel.Text;
+            car.Year = txtGodina.Text;
+            carsController.AddCar(car);
+            dgvCars.DataSource = carsController.GetAll();
         }
     }
 }

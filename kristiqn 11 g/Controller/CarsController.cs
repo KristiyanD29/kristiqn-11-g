@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace kristiqn_11_g.Controller
 {
+
     internal class CarsController
     {
+
         public List<Car> GetAll()
         {
             using (CarsEntities db = new CarsEntities())
@@ -16,6 +18,16 @@ namespace kristiqn_11_g.Controller
                 { return db.Cars.ToList(); }
             }
 
+        }
+
+        public void AddCar(Car car)
+        {
+            using (CarsEntities db = new CarsEntities())
+            {
+                car.Id = db.Cars.ToList().LastOrDefault().Id + 1;
+                db.Cars.Add(car);
+                db.SaveChanges();
+            }
         }
     }
 }
